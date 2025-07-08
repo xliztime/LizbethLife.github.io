@@ -1,6 +1,6 @@
 function checkPassword() {
   const password = document.getElementById('passwordInput').value;
-  const correctPassword = "lavitachebrilla"; // puoi cambiarla con la tua password personale
+  const correctPassword = "elisa"; 
 
   if (password === correctPassword) {
     window.location.href = "secret.html"; // porta alla tua area personale
