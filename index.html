@@ -31,8 +31,10 @@
     /* HEADER */
     header {
       background: white;
-      padding: 2rem;
-      text-align: center;
+      padding: 1.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
       position: sticky;
       top: 0;
@@ -41,29 +43,29 @@
     }
 
     header.scrolled {
-      padding: 1rem;
+      padding: 1rem 1.5rem;
       background: rgba(255, 255, 255, 0.9);
       backdrop-filter: blur(10px);
       box-shadow: 0 4px 16px rgba(0,0,0,0.08);
     }
 
     header h1 {
-      font-size: 2.5rem;
+      font-size: 2rem;
       color: var(--pink-main);
     }
 
     header p {
-      font-size: 1.2rem;
-      margin-top: 0.5rem;
+      font-size: 1rem;
       color: #666;
     }
 
+    /* NAV DESKTOP */
     nav {
-      margin-top: 1rem;
+      display: flex;
+      gap: 1.5rem;
     }
 
     nav a {
-      margin: 0 1rem;
       text-decoration: none;
       color: #555;
       font-weight: bold;
@@ -72,6 +74,51 @@
 
     nav a:hover {
       color: var(--pink-main);
+    }
+
+    /* HAMBURGER ICON (MOBILE) */
+    .hamburger {
+      display: none;
+      flex-direction: column;
+      gap: 5px;
+      cursor: pointer;
+    }
+
+    .hamburger span {
+      width: 26px;
+      height: 3px;
+      background: var(--pink-main);
+      border-radius: 5px;
+      transition: 0.3s;
+    }
+
+    /* MOBILE MENU OVERLAY */
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 70%;
+      height: 100%;
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(14px);
+      box-shadow: -4px 0 20px rgba(0,0,0,0.1);
+      padding: 4rem 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      transition: right 0.4s ease;
+      z-index: 998;
+    }
+
+    .mobile-menu a {
+      font-size: 1.2rem;
+      color: var(--pink-main);
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .mobile-menu.open {
+      right: 0;
     }
 
     /* SEZIONI + ANIMAZIONE */
@@ -155,25 +202,6 @@
       filter: brightness(1.08);
     }
 
-    /* LISTE */
-    ul {
-      list-style: none;
-      padding-left: 0;
-      margin-top: 1rem;
-    }
-
-    ul li {
-      margin-bottom: 0.5rem;
-    }
-
-    a {
-      color: var(--pink-main);
-    }
-
-    a:hover {
-      text-decoration: underline;
-    }
-
     /* FOOTER */
     footer {
       text-align: center;
@@ -184,24 +212,23 @@
       border-top: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* 📱 MOBILE (max 600px) */
-    @media (max-width: 600px) {
+    /* 📱 MOBILE */
+    @media (max-width: 700px) {
 
-      header {
-        padding: 1.2rem;
+      nav {
+        display: none;
+      }
+
+      .hamburger {
+        display: flex;
       }
 
       header h1 {
-        font-size: 1.9rem;
+        font-size: 1.7rem;
       }
 
       header p {
-        font-size: 1rem;
-      }
-
-      nav a {
-        margin: 0 0.5rem;
-        font-size: 0.9rem;
+        display: none;
       }
 
       .section {
@@ -212,61 +239,8 @@
         font-size: 1.6rem;
       }
 
-      .card {
-        padding: 1.5rem;
-      }
-
-      p, li {
-        font-size: 0.95rem;
-        line-height: 1.55;
-      }
-
-      a.button {
-        padding: 0.7rem 1.2rem;
-        font-size: 0.9rem;
-      }
-
       .grid {
         grid-template-columns: 1fr;
-      }
-    }
-
-    /* 📱📲 TABLET (600px – 900px) */
-    @media (min-width: 600px) and (max-width: 900px) {
-
-      header {
-        padding: 1.5rem;
-      }
-
-      header h1 {
-        font-size: 2.2rem;
-      }
-
-      .section {
-        padding: 3.5rem 1.8rem;
-      }
-
-      .section h2 {
-        font-size: 1.8rem;
-      }
-
-      .grid {
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      }
-
-      p, li {
-        font-size: 1rem;
-      }
-    }
-
-    /* 💻 DESKTOP LARGE (oltre 1200px) */
-    @media (min-width: 1200px) {
-      .section {
-        max-width: 1100px;
-      }
-
-      .card {
-        padding: 2.2rem;
       }
     }
   </style>
@@ -275,8 +249,18 @@
 <body>
 
   <header>
-    <h1>Lizbeth Life</h1>
-    <p>Content Creator • Lifestyle • Tips</p>
+    <div>
+      <h1>Lizbeth Life</h1>
+    </div>
+
+    <!-- HAMBURGER ICON -->
+    <div class="hamburger" id="hamburger">
+      <span></span>
+      <span></span>
+      <span></span>
+    </div>
+
+    <!-- NAV DESKTOP -->
     <nav>
       <a href="#about">Chi sono</a>
       <a href="#youtube">YouTube</a>
@@ -285,6 +269,15 @@
       <a href="#contatti">Contatti</a>
     </nav>
   </header>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#about">Chi sono</a>
+    <a href="#youtube">YouTube</a>
+    <a href="#instagram">Instagram</a>
+    <a href="#progetti">Progetti</a>
+    <a href="#contatti">Contatti</a>
+  </div>
 
   <section id="about" class="section">
     <h2>Chi sono</h2>
@@ -295,7 +288,7 @@
     <h2>Canale YouTube</h2>
     <div class="card">
       <p>Il mio canale <strong>Lizbeth Life</strong> è il mio spazio creativo: vlog, giornate universitarie, viaggi, amici e vita sociale ma tutto REALE e così com'è.</p>
-      <a href="https://youtube.com/@xliztime?si=pSp0nHwfAoBBK846" class="button" target="_blank">Visita il Canale</a>
+      <a href="https://youtube.com/@xliztime" class="button" target="_blank">Visita il Canale</a>
     </div>
   </section>
 
@@ -351,16 +344,27 @@
 
     // Fade-in sezioni
     const sections = document.querySelectorAll('.section');
-
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('visible');
-        }
+        if (entry.isIntersecting) entry.target.classList.add('visible');
       });
     }, { threshold: 0.2 });
-
     sections.forEach(section => observer.observe(section));
+
+    // Hamburger menu
+    const hamburger = document.getElementById("hamburger");
+    const mobileMenu = document.getElementById("mobileMenu");
+
+    hamburger.addEventListener("click", () => {
+      mobileMenu.classList.toggle("open");
+    });
+
+    // Chiudi menu quando clicchi un link
+    document.querySelectorAll(".mobile-menu a").forEach(link => {
+      link.addEventListener("click", () => {
+        mobileMenu.classList.remove("open");
+      });
+    });
   </script>
 
 </body>
