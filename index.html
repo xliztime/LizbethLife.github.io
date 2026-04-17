@@ -54,11 +54,6 @@
       color: var(--pink-main);
     }
 
-    header p {
-      font-size: 1rem;
-      color: #666;
-    }
-
     /* NAV DESKTOP */
     nav {
       display: flex;
@@ -76,7 +71,7 @@
       color: var(--pink-main);
     }
 
-    /* HAMBURGER ICON (MOBILE) */
+    /* HAMBURGER ICON */
     .hamburger {
       display: none;
       flex-direction: column;
@@ -92,7 +87,7 @@
       transition: 0.3s;
     }
 
-    /* MOBILE MENU OVERLAY */
+    /* MOBILE MENU */
     .mobile-menu {
       position: fixed;
       top: 0;
@@ -121,7 +116,7 @@
       right: 0;
     }
 
-    /* SEZIONI + ANIMAZIONE */
+    /* SEZIONI */
     .section {
       padding: 4rem 2rem;
       max-width: 1000px;
@@ -129,6 +124,7 @@
       opacity: 0;
       transform: translateY(20px);
       transition: opacity 0.8s ease, transform 0.8s ease;
+      scroll-margin-top: 140px; /* FIX HEADER OVERLAP */
     }
 
     .section.visible {
@@ -166,7 +162,7 @@
       gap: 2rem;
     }
 
-    /* CARD GLASSMORPHISM */
+    /* CARD */
     .card {
       background: rgba(255, 255, 255, 0.6);
       backdrop-filter: blur(12px);
@@ -182,7 +178,7 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.08);
     }
 
-    /* BOTTONI */
+    /* BUTTON */
     a.button {
       display: inline-block;
       padding: 0.75rem 1.5rem;
@@ -212,8 +208,12 @@
       border-top: 1px solid rgba(0,0,0,0.05);
     }
 
-    /* 📱 MOBILE */
+    /* 📱 MOBILE FIX */
     @media (max-width: 700px) {
+
+      html {
+        scroll-padding-top: 140px; /* FIX HEADER OVERLAP */
+      }
 
       nav {
         display: none;
@@ -225,10 +225,6 @@
 
       header h1 {
         font-size: 1.7rem;
-      }
-
-      header p {
-        display: none;
       }
 
       .section {
@@ -249,18 +245,14 @@
 <body>
 
   <header>
-    <div>
-      <h1>Lizbeth Life</h1>
-    </div>
+    <h1>Lizbeth Life</h1>
 
-    <!-- HAMBURGER ICON -->
     <div class="hamburger" id="hamburger">
       <span></span>
       <span></span>
       <span></span>
     </div>
 
-    <!-- NAV DESKTOP -->
     <nav>
       <a href="#about">Chi sono</a>
       <a href="#youtube">YouTube</a>
@@ -270,7 +262,6 @@
     </nav>
   </header>
 
-  <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <a href="#about">Chi sono</a>
     <a href="#youtube">YouTube</a>
@@ -281,13 +272,13 @@
 
   <section id="about" class="section">
     <h2>Chi sono</h2>
-    <p>Ciao! Sono Elisa, ma puoi chiamarmi Eli o Liz. Studio Farmacia e Medicina alla Sapienza di Roma, ma nel tempo libero, per staccare, mi dedico alla creazione di contenuti. Amo leggere, scrivere, suonare il pianoforte e se sei qui, hai capito che mi diletto anche nella programmazione. La mia vita è una serie di eventi "for the plot" e ho iniziato a condividerla per riderci sopra, magari ispirare e crescere insieme a chi mi segue. Spero tu possa goderti questo mio piccolo spazio dove condivido la mia vita!</p>
+    <p>Ciao! Sono Elisa, ma puoi chiamarmi Eli o Liz. Studio Farmacia e Medicina alla Sapienza di Roma, ma nel tempo libero, per staccare, mi dedico alla creazione di contenuti...</p>
   </section>
 
   <section id="youtube" class="section">
     <h2>Canale YouTube</h2>
     <div class="card">
-      <p>Il mio canale <strong>Lizbeth Life</strong> è il mio spazio creativo: vlog, giornate universitarie, viaggi, amici e vita sociale ma tutto REALE e così com'è.</p>
+      <p>Il mio canale <strong>Lizbeth Life</strong> è il mio spazio creativo...</p>
       <a href="https://youtube.com/@xliztime" class="button" target="_blank">Visita il Canale</a>
     </div>
   </section>
@@ -295,7 +286,7 @@
   <section id="instagram" class="section">
     <h2>Instagram & Reels</h2>
     <div class="card">
-      <p>Sul mio profilo condivido me, momenti carini, giri in moto, miei amici o università, insomma fatti un giro lì se vuoi rimanere sempre aggiornato.</p>
+      <p>Sul mio profilo condivido me, momenti carini...</p>
       <a href="https://www.instagram.com/xliztime" class="button" target="_blank">Segui su Instagram</a>
     </div>
   </section>
@@ -303,24 +294,14 @@
   <section id="progetti" class="section">
     <h2>Progetti Creativi</h2>
     <div class="grid">
-      <div class="card">
-        <h3>Podcast in arrivo</h3>
-        <p>Un podcast che unisce riflessione, ironia e temi profondi con stile personale ed estetico.</p>
-      </div>
-      <div class="card">
-        <h3>???</h3>
-        <p>?</p>
-      </div>
-      <div class="card">
-        <h3>???</h3>
-        <p>?</p>
-      </div>
+      <div class="card"><h3>Podcast in arrivo</h3><p>Un podcast che unisce riflessione...</p></div>
+      <div class="card"><h3>???</h3><p>?</p></div>
+      <div class="card"><h3>???</h3><p>?</p></div>
     </div>
   </section>
 
   <section id="contatti" class="section">
     <h2>Contatti</h2>
-    <p>Per collaborazioni, domande o semplicemente per scrivermi:</p>
     <ul>
       <li>Email: <a href="mailto:elisa05.ragone@gmail.com">elisa05.ragone@gmail.com</a></li>
       <li>Instagram: <a href="https://www.instagram.com/xliztime">@xliztime</a></li>
@@ -335,11 +316,8 @@
     // Header shrink
     window.addEventListener("scroll", () => {
       const header = document.querySelector("header");
-      if (window.scrollY > 50) {
-        header.classList.add("scrolled");
-      } else {
-        header.classList.remove("scrolled");
-      }
+      if (window.scrollY > 50) header.classList.add("scrolled");
+      else header.classList.remove("scrolled");
     });
 
     // Fade-in sezioni
@@ -359,11 +337,8 @@
       mobileMenu.classList.toggle("open");
     });
 
-    // Chiudi menu quando clicchi un link
     document.querySelectorAll(".mobile-menu a").forEach(link => {
-      link.addEventListener("click", () => {
-        mobileMenu.classList.remove("open");
-      });
+      link.addEventListener("click", () => mobileMenu.classList.remove("open"));
     });
   </script>
 
