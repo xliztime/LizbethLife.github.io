@@ -9,6 +9,13 @@
   <style>
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
+    :root {
+      --pink-main: #d27a8f;
+      --pink-light: #ffe6ee;
+      --beige-light: #fff4e3;
+      --accent: #e8b3c2;
+    }
+
     html {
       scroll-behavior: smooth;
       scroll-padding-top: 100px;
@@ -16,7 +23,7 @@
 
     body {
       font-family: 'Montserrat', sans-serif;
-      background: linear-gradient(135deg, #ffe0e9, #ffeecb);
+      background: linear-gradient(135deg, var(--pink-light), var(--beige-light));
       color: #333;
       line-height: 1.6;
     }
@@ -42,7 +49,7 @@
 
     header h1 {
       font-size: 2.5rem;
-      color: #d88a9b;
+      color: var(--pink-main);
     }
 
     header p {
@@ -64,7 +71,7 @@
     }
 
     nav a:hover {
-      color: #d88a9b;
+      color: var(--pink-main);
     }
 
     /* SEZIONI + ANIMAZIONE */
@@ -83,7 +90,7 @@
     }
 
     .section h2 {
-      color: #d88a9b;
+      color: var(--pink-main);
       font-size: 2rem;
       margin-bottom: 1rem;
       position: relative;
@@ -96,7 +103,7 @@
       bottom: -6px;
       width: 40px;
       height: 3px;
-      background: #d88a9b;
+      background: var(--pink-main);
       border-radius: 2px;
       transition: width 0.4s ease;
     }
@@ -133,18 +140,19 @@
       display: inline-block;
       padding: 0.75rem 1.5rem;
       margin-top: 1rem;
-      background: linear-gradient(135deg, #d88a9b, #e7a7b6);
+      background: linear-gradient(135deg, var(--pink-main), var(--accent));
       color: white;
       border-radius: 2rem;
       text-decoration: none;
       font-weight: bold;
-      box-shadow: 0 4px 12px rgba(216, 138, 155, 0.4);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 12px rgba(210, 122, 143, 0.4);
+      transition: transform 0.3s ease, box-shadow 0.3s ease, filter 0.3s ease;
     }
 
     a.button:hover {
       transform: translateY(-3px);
-      box-shadow: 0 8px 20px rgba(216, 138, 155, 0.6);
+      box-shadow: 0 8px 20px rgba(210, 122, 143, 0.6);
+      filter: brightness(1.08);
     }
 
     /* LISTE */
@@ -159,7 +167,7 @@
     }
 
     a {
-      color: #d88a9b;
+      color: var(--pink-main);
     }
 
     a:hover {
@@ -170,10 +178,96 @@
     footer {
       text-align: center;
       padding: 2rem;
-      background: linear-gradient(135deg, #fff, #ffeef4);
+      background: linear-gradient(135deg, #fff, var(--pink-light));
       color: #999;
       font-size: 0.9rem;
       border-top: 1px solid rgba(0,0,0,0.05);
+    }
+
+    /* 📱 MOBILE (max 600px) */
+    @media (max-width: 600px) {
+
+      header {
+        padding: 1.2rem;
+      }
+
+      header h1 {
+        font-size: 1.9rem;
+      }
+
+      header p {
+        font-size: 1rem;
+      }
+
+      nav a {
+        margin: 0 0.5rem;
+        font-size: 0.9rem;
+      }
+
+      .section {
+        padding: 3rem 1.2rem;
+      }
+
+      .section h2 {
+        font-size: 1.6rem;
+      }
+
+      .card {
+        padding: 1.5rem;
+      }
+
+      p, li {
+        font-size: 0.95rem;
+        line-height: 1.55;
+      }
+
+      a.button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* 📱📲 TABLET (600px – 900px) */
+    @media (min-width: 600px) and (max-width: 900px) {
+
+      header {
+        padding: 1.5rem;
+      }
+
+      header h1 {
+        font-size: 2.2rem;
+      }
+
+      .section {
+        padding: 3.5rem 1.8rem;
+      }
+
+      .section h2 {
+        font-size: 1.8rem;
+      }
+
+      .grid {
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+    }
+
+    /* 💻 DESKTOP LARGE (oltre 1200px) */
+    @media (min-width: 1200px) {
+      .section {
+        max-width: 1100px;
+      }
+
+      .card {
+        padding: 2.2rem;
+      }
     }
   </style>
 </head>
@@ -244,7 +338,6 @@
     <p>&copy; 2025 Elisa Ragone | Tutti i diritti riservati</p>
   </footer>
 
-  <!-- SCRIPT HEADER + ANIMAZIONI -->
   <script>
     // Header shrink
     window.addEventListener("scroll", () => {
